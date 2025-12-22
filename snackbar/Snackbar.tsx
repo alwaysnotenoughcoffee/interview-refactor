@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { SnackBarProps, Announcement } from './SnackBar.types';
 
 const SnackBar = ({
