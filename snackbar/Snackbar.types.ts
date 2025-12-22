@@ -1,5 +1,5 @@
 export interface SnackBarVariantProps {
-  variant?: 'default' | 'dark' | 'light';
+  variant?: 'default' | 'dark' | 'light' | 'super_large' | 'compact';
 }
 
 export interface SnackBarProps extends SnackBarVariantProps {
