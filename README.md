@@ -6,6 +6,10 @@ Your task is to **refactor the code for readability, maintainability, and scalab
 This is a refactor-only exercise — you do **not** need to run the code or produce any output.
 
 
+## Setup
+Please run yarn install to fix potential linting errors in Snackbar.tsx
+
+
 ## Goals
 
 - Improve code clarity and structure
