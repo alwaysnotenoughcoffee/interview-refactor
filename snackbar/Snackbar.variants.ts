@@ -24,6 +24,7 @@ export const variants: {
     classNames: {
       root: 'bg-gray-100 text-black',
       container: 'p-6 border border-gray-300',
+      content: '',
       overline: 'uppercase tracking-wide text-xs',
       message: 'text-lg font-semibold',
       close: 'text-sm underline',
