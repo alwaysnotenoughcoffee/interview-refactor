@@ -10,7 +10,7 @@ const SnackBar = ({
   classNames,
 }: SnackBarProps) => {
   const [IsVisible, setIsVisible] = useState(true);
-  const [idx, setIdx] = useState(0);
+  const idx = 0;
 
   const [HasAnnouncements, setHasAnnouncements] = useState(
     announcements.length > 0,
