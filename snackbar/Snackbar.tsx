@@ -19,7 +19,7 @@ const SnackBar = ({
   
   const messageText = activeAnnouncement?.message ?? message;
 
-  const CloseSnackBar = () => {
+  const closeSnackBar = () => {
     setIsVisible(false);
   };
 
@@ -46,7 +46,7 @@ const SnackBar = ({
               {closable && (
                 <button
                   className={classNames.close}
-                  onClick={() => CloseSnackBar()}
+                  onClick={closeSnackBar}
                   aria-label="Close"
                 >
                   Dismiss
@@ -84,9 +84,7 @@ const SnackBar = ({
         {closable && (
           <button
             className={classNames.close}
-            onClick={() => {
-              setIsVisible(false);
-            }}
+            onClick={closeSnackBar}
             aria-label="Close"
           >
             ✕
