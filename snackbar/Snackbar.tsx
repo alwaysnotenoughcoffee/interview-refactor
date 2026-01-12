@@ -37,7 +37,7 @@ const SnackBar = ({
             </div>
           </header>
 
-          <div className="flex flex-col gap-4">
+          <div className={classNames.content}>
             <div className={classNames.message}>
               {messageText}
             </div>
