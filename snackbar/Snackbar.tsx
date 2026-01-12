@@ -22,46 +22,6 @@ const SnackBar = ({
   const closeSnackBar = () => {
     setIsVisible(false);
   };
-
-  if (variant === 'super_large') {
-    return (
-      <section
-        className={classNames.root}
-        data-id={id}
-        data-variant={variant}
-      >
-        <div className={classNames.container}>
-          <header className="mb-2">
-            <div className={classNames.overline}>
-              {activeAnnouncement?.overline || 'Announcement'}
-            </div>
-          </header>
-
-          <div className={classNames.content}>
-            <div className={classNames.message}>
-              {messageText}
-            </div>
-
-            <div className="flex justify-end">
-              {closable && (
-                <button
-                  className={classNames.close}
-                  onClick={closeSnackBar}
-                  aria-label="Close"
-                >
-                  Dismiss
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  /**
-   * Default variant
-   */
   return (
     <section
       className={classNames.root}
@@ -69,19 +29,39 @@ const SnackBar = ({
       data-variant={variant}
     >
       <div className={classNames.container}>
+        {variant === 'super_large' && (
+          <header className="mb-2">
+            <div className={classNames.overline}>
+              {activeAnnouncement?.overline || 'Announcement'}
+            </div>
+          </header>
+        )}
+
         <div className={classNames.content}>
-          {activeAnnouncement?.overline && (
+          {variant !== 'super_large' && activeAnnouncement?.overline && (
             <div className={classNames.overline}>
               {activeAnnouncement.overline}
             </div>
           )}
 
           <div className={classNames.message}>
-              {messageText}
+            {messageText}
           </div>
+
+          {closable && variant === 'super_large' && (
+            <div className="flex justify-end">
+              <button
+                className={classNames.close}
+                onClick={closeSnackBar}
+                aria-label="Close"
+              >
+                Dismiss
+              </button>
+            </div>
+          )}
         </div>
 
-        {closable && (
+        {closable && variant !== 'super_large' && (
           <button
             className={classNames.close}
             onClick={closeSnackBar}
