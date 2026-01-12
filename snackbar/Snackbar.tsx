@@ -17,12 +17,7 @@ const SnackBar = ({
 
   const activeAnnouncement: Announcement | undefined = announcements.length ? announcements[0] : undefined;
   
-  const getMessageText = () => {
-    if (activeAnnouncement && activeAnnouncement.message) {
-      return activeAnnouncement.message;
-    }
-    return message;
-  };
+  const messageText = activeAnnouncement?.message ?? message;
 
   const CloseSnackBar = () => {
     setIsVisible(false);
@@ -44,7 +39,7 @@ const SnackBar = ({
 
           <div className="flex flex-col gap-4">
             <div className={classNames.message}>
-              {activeAnnouncement?.message || message}
+              {messageText}
             </div>
 
             <div className="flex justify-end">
@@ -82,7 +77,7 @@ const SnackBar = ({
           )}
 
           <div className={classNames.message}>
-            {getMessageText()}
+              {messageText}
           </div>
         </div>
 
