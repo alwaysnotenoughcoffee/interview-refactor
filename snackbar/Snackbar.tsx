@@ -9,19 +9,49 @@ const SnackBar = ({
   variant = 'default',
   classNames,
 }: SnackBarProps) => {
-  const [IsVisible, setIsVisible] = useState(true);
-  
-  if (IsVisible === false || IsVisible === null) {
+  const [isVisible, setIsVisible] = useState(true);
+
+  if (!isVisible) {
     return null;
   }
 
-  const activeAnnouncement: Announcement | undefined = announcements.length ? announcements[0] : undefined;
-  
+  const activeAnnouncement: Announcement | undefined =
+    announcements.length ? announcements[0] : undefined;
+
   const messageText = activeAnnouncement?.message ?? message;
 
   const closeSnackBar = () => {
     setIsVisible(false);
   };
+
+  const renderCloseButton = () => {
+    if (!closable) return null;
+
+    if (variant === 'super_large') {
+      return (
+        <div className="flex justify-end">
+          <button
+            className={classNames.close}
+            onClick={closeSnackBar}
+            aria-label="Close"
+          >
+            Dismiss
+          </button>
+        </div>
+      );
+    }
+
+    return (
+      <button
+        className={classNames.close}
+        onClick={closeSnackBar}
+        aria-label="Close"
+      >
+        ✕
+      </button>
+    );
+  };
+
   return (
     <section
       className={classNames.root}
@@ -48,28 +78,10 @@ const SnackBar = ({
             {messageText}
           </div>
 
-          {closable && variant === 'super_large' && (
-            <div className="flex justify-end">
-              <button
-                className={classNames.close}
-                onClick={closeSnackBar}
-                aria-label="Close"
-              >
-                Dismiss
-              </button>
-            </div>
-          )}
+          {variant === 'super_large' && renderCloseButton()}
         </div>
 
-        {closable && variant !== 'super_large' && (
-          <button
-            className={classNames.close}
-            onClick={closeSnackBar}
-            aria-label="Close"
-          >
-            ✕
-          </button>
-        )}
+        {variant !== 'super_large' && renderCloseButton()}
       </div>
     </section>
   );
