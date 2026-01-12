@@ -10,17 +10,12 @@ const SnackBar = ({
   classNames,
 }: SnackBarProps) => {
   const [IsVisible, setIsVisible] = useState(true);
-  const [hasAnnouncements, setHasAnnouncements] = useState(announcements.length > 0);
-
-  useEffect(() => {
-    setHasAnnouncements(announcements.length > 0);
-  }, [announcements]);
-
+  
   if (IsVisible === false || IsVisible === null) {
     return null;
   }
 
-  const activeAnnouncement: Announcement | undefined = hasAnnouncements ? announcements[0] : undefined;
+  const activeAnnouncement: Announcement | undefined = announcements.length ? announcements[0] : undefined;
   
   const getMessageText = () => {
     if (activeAnnouncement && activeAnnouncement.message) {
